@@ -1,0 +1,11 @@
+[
+  { "_id": 0, "name": "Padre" },
+  { "_id": 1, "name": "Madre" },
+  { "_id": 2, "name": "Hijo/a" },
+  { "_id": 3, "name": "Abuelo/a" },
+  { "_id": 4, "name": "Tío/a" },
+  { "_id": 5, "name": "Amigo/a" },
+  { "_id": 6, "name": "Primo/a" },
+  { "_id": 7, "name": "Sobrino/a" },
+  { "_id": 8, "name": "Otros" }
+]

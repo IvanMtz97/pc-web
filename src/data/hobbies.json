@@ -1,0 +1,13 @@
+[
+  { "_id": 0, "name": "Ninguno" },
+  { "_id": 1, "name": "Caminar" },
+  { "_id": 2, "name": "Cocinar" },
+  { "_id": 3, "name": "Gimnasio" },
+  { "_id": 4, "name": "Gotcha" },
+  { "_id": 5, "name": "Jardineria" },
+  { "_id": 6, "name": "Leer" },
+  { "_id": 7, "name": "Pintar" },
+  { "_id": 8, "name": "Televisión" },
+  { "_id": 9, "name": "V_ideojuegos" },
+  { "_id": 10, "name": "Otros" }
+]

@@ -1,0 +1,11 @@
+[
+  { "_id": 0, "name": "Ninguno" },
+  { "_id": 1, "name": "Primaria" },
+  { "_id": 2, "name": "Secundaria" },
+  { "_id": 3, "name": "Preparatoria" },
+  { "_id": 4, "name": "Tecnico" },
+  { "_id": 5, "name": "Licenciatura" },
+  { "_id": 6, "name": "Maestria" },
+  { "_id": 7, "name": "Doctorado" },
+  { "_id": 8, "name": "Otros" }
+]

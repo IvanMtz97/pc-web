@@ -1,0 +1,23 @@
+[
+  { "_id": 0, "name": "Ninguno" },
+  { "_id": 1, "name": "América" },
+  { "_id": 2, "name": "Atlas" },
+  { "_id": 3, "name": "Cruz Azul" },
+  { "_id": 4, "name": "Guadalajara (Chivas)" },
+  { "_id": 5, "name": "Juárez" },
+  { "_id": 6, "name": "León" },
+  { "_id": 7, "name": "Monarcas Morelia" },
+  { "_id": 8, "name": "Monterrey" },
+  { "_id": 9, "name": "Necaxa" },
+  { "_id": 10, "name": "Pachuca" },
+  { "_id": 11, "name": "Puebla" },
+  { "_id": 12, "name": "Querétaro" },
+  { "_id": 13, "name": "San Luis" },
+  { "_id": 14, "name": "Santos" },
+  { "_id": 15, "name": "Tigres UANL" },
+  { "_id": 16, "name": "Tijuana (XOLOS)" },
+  { "_id": 17, "name": "Toluca" },
+  { "_id": 18, "name": "UNAM (pumas)" },
+  { "_id": 19, "name": "Veracruz (tiburones)" },
+  { "_id": 20, "name": "Otros" }
+]

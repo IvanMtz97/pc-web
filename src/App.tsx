@@ -1,25 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter,
+  Switch,
+  RouteComponentProps,
+} from 'react-router-dom';
+import Route from './components/Route';
+import AppRoutes, { AppRoute } from './routes';
+import { AuthProvider } from './hooks/auth';
 import './App.css';
 
 function App() {
+  function renderRoutes(): React.ReactNode[] {
+    return AppRoutes.map((route: AppRoute, i: number): React.ReactNode => {
+      return (
+        <Route
+          key={`${i}-${route.label}`}
+          exact
+          public={route.public}
+          path={route.path}
+          render={(props: RouteComponentProps): React.ReactNode => {
+            return (
+              <route.layout>
+                <route.component {...props} />
+              </route.layout>
+            );
+          }}
+        />
+      );
+    });
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <BrowserRouter>
+        <Switch>
+          {renderRoutes()}
+        </Switch>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

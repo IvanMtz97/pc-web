@@ -1,0 +1,19 @@
+[
+  { "_id": 0, "name": "Ninguno" },
+  { "_id": 1, "name": "Artritis" },
+  { "_id": 2, "name": "Autismo" },
+  { "_id": 3, "name": "Cancer" },
+  { "_id": 4, "name": "Cirugías" },
+  { "_id": 5, "name": "Desnutricion" },
+  { "_id": 6, "name": "Diabetes" },
+  { "_id": 7, "name": "Hipertención" },
+  { "_id": 8, "name": "Obes_idad" },
+  { "_id": 9, "name": "Osteoporosis" },
+  { "_id": 10, "name": "Padecimientos Ginecológicos" },
+  { "_id": 11, "name": "Problemas de riñon" },
+  { "_id": 12, "name": "Problemas visuales" },
+  { "_id": 13, "name": "Usa lentes" },
+  { "_id": 14, "name": "Toxicomanias" },
+  { "_id": 15, "name": "Transfusione" },
+  { "_id": 16, "name": "Otros" }
+]

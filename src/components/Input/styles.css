@@ -1,0 +1,9 @@
+.is-invalid {
+  background-color: #ffeded !important;
+  border-color: red !important;
+}
+
+.is-valid {
+  background-color: #f9fff8 !important;
+  border-color: #03d207 !important;
+}

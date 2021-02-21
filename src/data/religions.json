@@ -1,0 +1,11 @@
+[
+  { "_id": 0, "name": "Ninguno" },
+  { "_id": 1, "name": "Ateo" },
+  { "_id": 2, "name": "Catolico" },
+  { "_id": 3, "name": "Cristiano" },
+  { "_id": 4, "name": "Judío" },
+  { "_id": 5, "name": "Mormón" },
+  { "_id": 6, "name": "Testigo de Jehová" },
+  { "_id": 7, "name": "Logias" },
+  { "_id": 8, "name": "Otros" }
+]

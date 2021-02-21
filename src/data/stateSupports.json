@@ -1,0 +1,11 @@
+[
+  { "_id": 0, "name": "Ninguno" },
+  { "_id": 1, "name": "Cov_id19 Apoyo para prueba" },
+  { "_id": 2, "name": "Cov_id19 Tarjetas para apoyo alimenticio" },
+  { "_id": 3, "name": "Programa Aliados Contigo" },
+  { "_id": 4, "name": "Programa de inclusión para Mujeres Jefas de Familia en condición de vulnerabil_idad" },
+  { "_id": 5, "name": "Programa de inclusión para personas con discapac_idad en condición de vulnerabil_idad" },
+  { "_id": 6, "name": "Programa de inclusión para personas de setenta años o más en condición de vulnerabil_idad" },
+  { "_id": 7, "name": "Vinculación con las Organizaciones de la Sociedad Civil (OSC)" },
+  { "_id": 8, "name": "Otros" }
+]

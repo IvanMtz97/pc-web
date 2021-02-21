@@ -1,0 +1,19 @@
+[
+  { "_id": 0, "name": "Ninguno" },
+  { "_id": 1, "name": "Apoyo capilla municipal" },
+  { "_id": 2, "name": "Apoyo panteon municipal" },
+  { "_id": 3, "name": "Becas" },
+  { "_id": 4, "name": "Cursos y clases impart_idas con cargo" },
+  { "_id": 5, "name": "Cursos y clases impart_idas sin cargo" },
+  { "_id": 6, "name": "Cov_id19 Apoyo despensa" },
+  { "_id": 7, "name": "Descuento en pago municipal" },
+  { "_id": 8, "name": "Apoyo Psicológico, Jurídico, Reporte de menores y Trabajo Social" },
+  { "_id": 9, "name": "Centros comunitarios - Talleres a Mujeres para aprender un oficio" },
+  { "_id": 10, "name": "DIF - Asistencia Social" },
+  { "_id": 11, "name": "DIF - CAI - Centros de educación" },
+  { "_id": 12, "name": "DIF - Centro Gerontologico - Adulto Mayor, Reportes y Activ_idades recreativas" },
+  { "_id": 13, "name": "DIF - Casas Club - Menores de 12 años, reforzar aprendizaje apoyo económico y de lenguaje" },
+  { "_id": 14, "name": "DIF - CRI - Centro de Rehabilitacion, terapias" },
+  { "_id": 15, "name": "DIF - Despensa" },
+  { "_id": 16, "name": "Otros" }
+]
