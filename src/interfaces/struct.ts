@@ -46,7 +46,7 @@ export default interface Struct {
   SoccerTeam?: string[];
   StateSupports?: string[];
   Street?: string;
-  Struct?: string[];
+  Struct?: string;
   StudyDegree?: string[];
   Surname?: string;
   Twitter?: string;

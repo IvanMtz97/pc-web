@@ -1,24 +1,60 @@
 import * as React from 'react';
 import {
+  Button,
   Card,
-  Row,
-  Col,
   Checkbox,
+  Col,
+  Row,
+  Upload,
 } from 'antd';
-import Input, { InputChangeEvent } from '../../components/Input';
+import { FileImageOutlined } from '@ant-design/icons';
+import Input from '../../components/Input';
+import Select, { SelectOption } from '../../components/Select';
+import structs from '../../data/structs.json';
 import { useStruct } from '../../hooks/struct';
-import { isCellphoneValid } from '../../utils/validations';
+import {
+  isCurpValid,
+  isDayValid,
+  isHabitantElectorKeyValid,
+  isLeaderElectorKeyValid,
+  isNotNull,
+  isNumberNotNull,
+  isZipCodeValid,
+} from '../../utils/validations';
 
 function StructPoll() {
-  const { struct, setStruct } = useStruct();
+  const {
+    birthDate,
+    colonies,
+    handleDateChange,
+    handleInputChange,
+    handleSelectChange,
+    setStruct,
+    struct,
+  } = useStruct();
 
-  function handleInputChange(data: InputChangeEvent) {
-
+  function mapOptions(data: any): SelectOption[] {
+    return data.map((item: SelectOption): SelectOption => ({ value: item.value, label: item.label }));
   }
 
-  function handleCheckbox(data: boolean) {
+  function handleVinculatedCheckbox(data: boolean) {
     setStruct({
+      ...struct,
       IsVinculated: data,
+    });
+  }
+
+  function handleIneAddressCheckbox(data: boolean) {
+    setStruct({
+      ...struct,
+      IneEqualsLivingPlace: data,
+    });
+  }
+
+  function handleHasInternetCheckbox(data: boolean) {
+    setStruct({
+      ...struct,
+      LivingPlaceHasInternet: data,
     });
   }
 
@@ -26,13 +62,46 @@ function StructPoll() {
     if (struct?.IsVinculated) {
       return (
         <Row>
-          <Col lg={24}>
+          <Col xs={24} lg={24}>
+            <Input
+              allMayus
+              id="LeaderElectorKey"
+              label="Clave de elector de lider*"
+              onChange={handleInputChange}
+              validation={isLeaderElectorKeyValid}
+              value={struct.LeaderElectorKey}
+            />
+          </Col>
+        </Row>
+      );
+    }
+
+    return (
+      <Row>
+        <Col xs={24} lg={24}>
+          <Select
+            id="Struct"
+            label="Estructura*"
+            onChange={handleSelectChange}
+            options={mapOptions(structs)}
+            value={struct?.Struct}
+          />
+        </Col>
+      </Row>
+    );
+  }
+
+  function renderIneAddressField(): React.ReactNode | null {
+    if (!struct.IneEqualsLivingPlace) {
+      return (
+        <Row>
+          <Col xs={24} lg={24}>
             <Input
               allowEmpty
-              id="LeaderElectorKey"
+              id="LivingPlaceAddress"
+              label="Especifique dirección de vivienda"
               onChange={handleInputChange}
-              validation={isCellphoneValid}
-              value={struct.LeaderElectorKey}
+              value={struct.LivingPlaceAddress}
             />
           </Col>
         </Row>
@@ -49,7 +118,7 @@ function StructPoll() {
     >
       <Card
         className="form-card"
-        title="Nueva estructura"
+        title="Encuesta de liderazgo"
       >
         <label>¿Está vinculado?</label>
 
@@ -58,7 +127,7 @@ function StructPoll() {
             <Checkbox
               checked={struct?.IsVinculated}
               data-testid="IsVinculated-checkbox"
-              onClick={() => handleCheckbox(true)}
+              onClick={() => handleVinculatedCheckbox(true)}
             >
                 Si
             </Checkbox>
@@ -67,7 +136,7 @@ function StructPoll() {
             <Checkbox
               checked={!struct?.IsVinculated}
               data-testid="IsNotVinculated-checkbox"
-              onClick={() => handleCheckbox(false)}
+              onClick={() => handleVinculatedCheckbox(false)}
             >
               No
             </Checkbox>
@@ -77,7 +146,227 @@ function StructPoll() {
         <br />
 
         {renderStructInfoField()}
-      </Card>
+
+        <br />
+
+        <Row gutter={12}>
+          <Col xs={24} lg={12}>
+            <Input
+              id="ZipCode"
+              label="Código Postal*"
+              onChange={handleInputChange}
+              validation={isZipCodeValid}
+              value={struct.ZipCode}
+            />
+          </Col>
+
+          <Col xs={24} lg={12}>
+            <Select
+              id="Colony"
+              label="Colonia*"
+              onChange={handleSelectChange}
+              options={colonies}
+              value={struct.Colony}
+            />
+          </Col>
+        </Row>
+
+        <br />
+        
+        <Row gutter={12}>
+          <Col xs={24} lg={12}>
+            <Input
+              id="Street"
+              label="Calle*"
+              onChange={handleInputChange}
+              validation={isNotNull}
+              value={struct.Street}
+            />
+          </Col>
+
+          <Col xs={24} lg={12}>
+            <Input
+              id="HabitantElectorKey"
+              label="Clave de elector*"
+              onChange={handleInputChange}
+              validation={isHabitantElectorKeyValid}
+              value={struct.HabitantElectorKey}
+            />
+          </Col>
+        </Row>
+
+        <br />
+
+        <Row gutter={12}>
+          <Col xs={24} lg={12}>
+            <Input
+              id="ExteriorNumber"
+              label="Número exterior*"
+              onChange={handleInputChange}
+              type="number"
+              validation={isNumberNotNull}
+              value={struct.ExteriorNumber}
+            />
+          </Col>
+
+          <Col xs={24} lg={12}>
+            <Input
+              id="InteriorNumber"
+              label="Número interior"
+              onChange={handleInputChange}
+              type="number"
+              value={struct.InteriorNumber}
+            />
+          </Col>
+        </Row>
+
+        <br />
+
+        <label>¿Coincide INE con dirección de vivienda?</label>
+
+        <Row>
+          <Col lg={1}>
+            <Checkbox
+              checked={struct?.IneEqualsLivingPlace}
+              data-testid="IneEqualsLivingPlace-checkbox"
+              onClick={() => handleIneAddressCheckbox(true)}
+            >
+                Si
+            </Checkbox>
+          </Col>
+          <Col lg={1}>
+            <Checkbox
+              checked={!struct?.IneEqualsLivingPlace}
+              data-testid="!IneEqualsLivingPlace-checkbox"
+              onClick={() => handleIneAddressCheckbox(false)}
+            >
+              No
+            </Checkbox>
+          </Col>
+        </Row>
+
+        <br />
+
+        {renderIneAddressField()}
+
+        <br />
+
+        <Row gutter={12}>
+          <Col xs={24} lg={12}>
+            <Input
+              id="IntegrantsQuantity"
+              label="¿Cuántos integrantes habitan tu domicilio?*"
+              onChange={handleInputChange}
+              type="number"
+              value={struct.IntegrantsQuantity}
+            />
+          </Col>
+
+          <Col xs={24} lg={12}>
+            <label>¿Tiene acceso a internet en la vivienda?</label>
+            <Row>
+              <Col lg={2}>
+                <Checkbox
+                  checked={struct?.LivingPlaceHasInternet}
+                  data-testid="LivingPlaceHasInternet-checkbox"
+                  onClick={() => handleHasInternetCheckbox(true)}
+                >
+                    Si
+                </Checkbox>
+              </Col>
+              <Col lg={2}>
+                <Checkbox
+                  checked={!struct?.LivingPlaceHasInternet}
+                  data-testid="!LivingPlaceHasInternet-checkbox"
+                  onClick={() => handleHasInternetCheckbox(false)}
+                >
+                  No
+                </Checkbox>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+
+        <br />
+
+        <Row>
+          <Col xs={24} lg={24}>
+            <Input
+              id="Name"
+              label="Nombre*"
+              onChange={handleInputChange}
+              validation={isNotNull}
+              value={struct.Name}
+            />
+          </Col>
+        </Row>
+
+        <br />
+
+        <Row gutter={12}>
+          <Col lg={12} xs={24}>
+            <Input
+              id="Surname"
+              label="Apellido Paterno*"
+              onChange={handleInputChange}
+              validation={isNotNull}
+              value={struct.Surname}
+            />
+          </Col>
+          <Col lg={12} xs={24}>
+            <Input
+              id="SecondSurname"
+              label="Apellido Materno*"
+              onChange={handleInputChange}
+              validation={isNotNull}
+              value={struct.SecondSurname}
+            />
+          </Col>
+        </Row>
+
+        <br />
+
+        <Row>
+          <label>Foto</label>
+          <Col lg={24}>
+            <Upload>
+              <Button icon={<FileImageOutlined />}>Haz click aqui para subir foto</Button>
+            </Upload>
+          </Col>
+        </Row>
+
+        <br />
+
+        <Row>
+          <Col xs={24} lg={24}>
+            <Input
+              allMayus
+              id="Curp"
+              label="CURP*"
+              onChange={handleInputChange}
+              validation={isCurpValid}
+              value={struct.Curp}
+            />
+          </Col>
+        </Row>
+
+      <br />
+
+      <label>Fecha de nacimiento*</label>
+      <Row gutter={12}>
+        <Col lg={2}>
+          <Input
+            id="Day"
+            label="Dia"
+            maxLength={2}
+            onChange={handleDateChange}
+            type="number"
+            validation={isDayValid}
+            value={birthDate.day}
+          />
+        </Col>
+      </Row>
+    </Card>
     </div>
   );
 }

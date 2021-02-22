@@ -16,7 +16,7 @@ type apiResponse = {
   Error?: string,
 };
 
-export default async function api(params: apiParams): Promise<any> {
+export default async function api(params: apiParams): Promise<apiResponse> {
   const token = await localStorage.getItem('token');
   const headers = {
     Authorization: `Bearer ${token}`,

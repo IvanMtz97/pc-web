@@ -16,16 +16,28 @@ type SignInResponse = {
   Message?: string,
   Data?: any,
 };
+type User = {
+  availability: boolean,
+  createdAt: string,
+  email: string,
+  isLogged: boolean,
+  password: string,
+  token: string,
+  type: string,
+  user: string,
+  _id: string,
+  __v: number,
+};
 const AuthContext = React.createContext({});
 
 function useProviderValue(): AuthProviderValue {
   const [loading, setLoading] = React.useState(false);
-  const [userData, setUserData] = React.useState(null);
+  const [userData, setUserData] = React.useState<User | null>(null);
 
   async function refreshCachedUserData() {
     const rawUserData = await localStorage.getItem('userData');
     const computedUserData = JSON.parse(rawUserData || '{}');
-
+    
     if (Object.keys(computedUserData).length > 0) {
       setUserData(computedUserData);
     } else {

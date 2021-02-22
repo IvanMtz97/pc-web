@@ -6,8 +6,8 @@ import './styles.css';
 
 export interface InputChangeEvent {
   readonly id: string,
-  readonly value: string,
   readonly isValid: boolean,
+  readonly value: string,
 };
 export interface InputProps {
   allMayus?: boolean,
@@ -19,9 +19,11 @@ export interface InputProps {
   isUpdate?: boolean,
   label?: string,
   onChange: (args: InputChangeEvent) => void,
+  placeholder?: string,
   type?: string,
   validation?: (args: string) => boolean,
   value: string | number | undefined,
+  maxLength?: number,
 };
 
 function CustomInput(props: InputProps) {
@@ -105,7 +107,10 @@ function CustomInput(props: InputProps) {
         data-cy={`${props.id}-input`}
         data-testid={`${props.id}-input`}
         id={`${props.id}-input`}
+        max={props.maxLength}
+        maxLength={props.maxLength}
         onChange={handleInputChange}
+        placeholder={props.placeholder}
         type={props.type || 'text'}
         value={props.value}
       />
